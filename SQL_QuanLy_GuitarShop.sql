@@ -102,6 +102,53 @@ INSERT INTO SanPham (maSP, maLSP, tenSP, moTa, donViTinh, anh, donGia) VALUES
 ('SP029', 'LSP02', N'Guitar Electric Ibanez AS63 - Artcore', N'Đàn guitar electric chất lượng cao', N'Chiếc', 'ibanez_as63_artcore.jpg', 9100000),
 ('SP030', 'LSP02', N'Guitar Electric Ibanez GRG220PA1 RG GIO', N'Đàn guitar electric chất lượng cao', N'Chiếc', 'ibanez_gr_gio.jpg', 7300000);
 
+-- Thêm dữ liệu cho bảng TaiKhoan
+INSERT INTO TaiKhoan (email, matKhau, nhanVien) VALUES
+('nhanvien1@gmail.com', 'matkhau1', 1),
+('nhanvien2@gmail.com', 'matkhau2', 1),
+('khachhang1@gmail.com', 'matkhau3', 0),
+('khachhang2@gmail.com', 'matkhau4', 0);
+
+-- Thêm dữ liệu cho bảng KhachHang
+INSERT INTO KhachHang (maKH, tenKH, sdt, email, diaChi) VALUES
+('KH001', N'Nguyễn Văn Khách 1', '0987654321', 'khachhang1@gmail.com', N'123 Đường ABC'),
+('KH002', N'Nguyễn Văn Khách 2', '0987654322', 'khachhang2@gmail.com', N'456 Đường XYZ');
+
+-- Thêm dữ liệu cho bảng LoaiNhanVien
+INSERT INTO LoaiNhanVien (maLNV, tenLNV) VALUES
+('LNV01', N'Quản lý'),
+('LNV02', N'Nhân viên bán hàng'),
+('LNV03', N'Nhân viên kho');
+
+-- Thêm dữ liệu cho bảng NhanVien
+INSERT INTO NhanVien (maNV, tenNV, sdt, email, maLNV, gioiTinh, ngaySinh) VALUES
+('NV001', N'Trần Thị Quản Lý', '0987654323', 'nhanvien1@gmail.com', 'LNV01', 0, '1990-01-01'),
+('NV002', N'Nguyễn Văn Bán Hàng', '0987654324', 'nhanvien2@gmail.com', 'LNV02', 1, '1992-03-15');
+
+-- Thêm dữ liệu cho bảng HoaDon
+INSERT INTO HoaDon (maHD, maKH, maNV, ngayGiaoDich) VALUES
+('HD001', 'KH001', 'NV001', '2023-01-10 08:30:00'),
+('HD002', 'KH002', 'NV002', '2023-01-11 09:45:00');
+
+-- Thêm dữ liệu cho bảng CTHD
+INSERT INTO CTHD (maHD, maSP, soLuong) VALUES
+('HD001', 'SP001', 2),
+('HD001', 'SP003', 1),
+('HD002', 'SP002', 1),
+('HD002', 'SP005', 3);
+
+-- Thêm dữ liệu cho bảng GioHang
+INSERT INTO GioHang (maGH, maKH) VALUES
+('GH001', 'KH001'),
+('GH002', 'KH002');
+
+-- Thêm dữ liệu cho bảng CTGH
+INSERT INTO CTGH (maGH, maSP, soLuong, daThanhToan) VALUES
+('GH001', 'SP004', 1, 0),
+('GH001', 'SP006', 2, 1),
+('GH002', 'SP008', 1, 0),
+('GH002', 'SP010', 3, 0);
+
 -- thêm khóa ngoại cho các bảng
 ALTER TABLE KhachHang ADD FOREIGN KEY (email) REFERENCES TaiKhoan(email)
 ALTER TABLE NhanVien ADD FOREIGN KEY (email) REFERENCES TaiKhoan(email)

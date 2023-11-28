@@ -1,0 +1,69 @@
+﻿@model Project_62133026.Models.NhanVien
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string gtinh = "";
+}
+
+<h2 class="text-center">XÓA NHÂN VIÊN</h2>
+
+<div>
+    <h3 style="color:red;">Bạn có chắc xóa sản phẩm này?</h3>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên nhân viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenNV)
+        </dd>
+
+        <dt>
+            SĐT
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sdt)
+        </dd>
+
+        <dt>
+            Giới tính
+        </dt>
+
+        <dd>
+            @{if (Model.gioiTinh == false)
+                { gtinh = "Nam"; }
+                else
+                { gtinh = "Nữ"; }
+            }
+            @gtinh
+        </dd>
+
+        <dt>
+            Ngày sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaySinh)
+        </dd>
+
+        <dt>
+            Loại nhân viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiNhanVien.tenLNV)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

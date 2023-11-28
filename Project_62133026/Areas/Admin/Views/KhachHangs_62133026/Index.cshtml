@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Project_62133026.Models.SanPham>
+﻿@model IEnumerable<Project_62133026.Models.KhachHang>
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +6,7 @@
     var i = 0;
 }
 
-<h2 class="text-center">SẢN PHẨM</h2>
+<h2 class="text-center">KHÁCH HÀNG</h2>
 
 <p>
     @Html.ActionLink("Thêm mới", "Create")
@@ -16,14 +16,12 @@
         <thead>
             <tr style="text-align:center;">
                 <th>STT</th>
-                <th>Mã sản phẩm</th>
-                <th>Tên sảm phẩm</th>
-                <th>Loại sản phẩm</th>
-                <th>Giá (VNĐ)</th>
+                <th>Tên khách hàng</th>
+                <th>Địa chỉ</th>
+                <th>SĐT</th>
                 <th>Chức năng</th>
             </tr>
         </thead>
-
         @foreach (var item in Model)
         {
             <tr>
@@ -32,24 +30,22 @@
                     @i
                 </th>
                 <td>
-                    @Html.DisplayFor(modelItem => item.maSP)
+                    @Html.DisplayFor(modelItem => item.tenKH)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.tenSP)
+                    @Html.DisplayFor(modelItem => item.diaChi)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LoaiSanPham.tenLSP)
+                    @Html.DisplayFor(modelItem => item.sdt)
                 </td>
+                
                 <td>
-                    @Html.DisplayFor(modelItem => item.donGia)
-                </td>
-                <td>
-                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.maSP }) |
-                    @Html.ActionLink("Chi tiết", "Details", new { id = item.maSP }) |
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.maSP })
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.maKH }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.maKH }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.maKH })
                 </td>
             </tr>
         }
-
     </table>
 </div>
+       

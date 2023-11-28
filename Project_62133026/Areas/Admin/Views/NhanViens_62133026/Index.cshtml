@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Project_62133026.Models.NhanVien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string gtinh = "";
+    var i = 0;
+}
+
+<h2 class="text-center">THÔNG TIN NHÂN VIÊN</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới nhân viên", "Create")
+</p>
+
+<div id="tbIndex" class="container">
+    <table class="table table-bordered table-striped table-responsive" id="tbData">
+        <thead>
+            <tr style="text-align:center;">
+                <th>STT</th>
+                <th>
+                    Tên nhân viên
+                </th>
+                <th>
+                    Giới tính
+                </th>
+                <th>
+                    Loại nhân viên
+                </th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th class="text-center" scope="row">
+                    @{ i++;}
+                    @i
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenNV)
+                </td>
+                
+                <td>
+                    @{if (item.gioiTinh == true)
+                        { gtinh = "Nam"; }
+                        else
+                        { gtinh = "Nữ"; }
+                    }
+                    @gtinh
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiNhanVien.tenLNV)
+                </td>
+                
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.maNV }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.maNV }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.maNV })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

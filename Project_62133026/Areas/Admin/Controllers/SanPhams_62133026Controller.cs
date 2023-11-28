@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -36,9 +37,27 @@ namespace Project_62133026.Areas.Admin
             return View(sanPham);
         }
 
+        public string autoID()
+        {
+            string id = "";
+            var sanPham = db.SanPhams.Last();
+            string lastNumber = sanPham.maSP.Substring(2);
+            int index = Convert.ToInt32(lastNumber);
+            index++;
+
+            if (index > 9) { id = "SP0"; }
+            else if (index > 99) { id = "SP"; }
+            else { id = "SP00"; }
+
+            // Get last name
+
+            return id + sanPham.ToString();
+        }
+
         // GET: Admin/SanPhams_62133026/Create
         public ActionResult Create()
         {
+
             ViewBag.maLSP = new SelectList(db.LoaiSanPhams, "maLSP", "tenLSP");
             return View();
         }
@@ -50,8 +69,15 @@ namespace Project_62133026.Areas.Admin
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "maSP,maLSP,tenSP,moTa,donViTinh,donGia,anh")] SanPham sanPham)
         {
+            var imgSP = Request.Files["Avatar"];
+            string postedFileName = System.IO.Path.GetFileName(imgSP.FileName);
+            var path = Server.MapPath("/Image/" + postedFileName);
+            imgSP.SaveAs(path);
+
             if (ModelState.IsValid)
             {
+                sanPham.anh = postedFileName;
+                sanPham.maSP = autoID();
                 db.SanPhams.Add(sanPham);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -60,6 +86,7 @@ namespace Project_62133026.Areas.Admin
             ViewBag.maLSP = new SelectList(db.LoaiSanPhams, "maLSP", "tenLSP", sanPham.maLSP);
             return View(sanPham);
         }
+
 
         // GET: Admin/SanPhams_62133026/Edit/5
         public ActionResult Edit(string id)
@@ -84,6 +111,17 @@ namespace Project_62133026.Areas.Admin
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "maSP,maLSP,tenSP,moTa,donViTinh,donGia,anh")] SanPham sanPham)
         {
+            var imgSP = Request.Files["Avatar"];
+            try
+            {
+                //Lấy thông tin từ input type=file có tên Avatar
+                string postedFileName = System.IO.Path.GetFileName(imgSP.FileName);
+                //Lưu hình đại diện về Server
+                var path = Server.MapPath("/Image/" + postedFileName);
+                imgSP.SaveAs(path);
+            }
+            catch
+            { }
             if (ModelState.IsValid)
             {
                 db.Entry(sanPham).State = EntityState.Modified;
