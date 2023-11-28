@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Project_62133026.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var i = 0;
+}
+
+<h2 class="text-center">SẢN PHẨM</h2>
+
+<p>
+    &nbsp;
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div id="tbIndex" class="container">
+    <table class="table table-bordered table-striped table-responsive" id="tbData">
+        <thead>
+            <tr style="text-align:center;">
+                <th>STT</th>
+                <th>Tên sảm phẩm</th>
+                <th>Loại sản phẩm</th>
+                <th>Giá (VNĐ)</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th class="text-center" scope="row">
+                    @{ i++;}
+                    @i
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenSP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiSanPham.tenLSP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.donGia) 
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.maSP }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.maSP }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.maSP })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

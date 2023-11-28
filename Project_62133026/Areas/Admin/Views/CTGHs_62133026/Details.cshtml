@@ -1,0 +1,34 @@
+﻿@model Project_62133026.Models.CTGH
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CTGH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GioHang.maKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioHang.maKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SanPham.maLSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SanPham.maLSP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
