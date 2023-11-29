@@ -131,6 +131,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CTGHs_62133026Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\CTHDs_62133026Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\Dashboard_62133026Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\HoaDons_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangs_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanViens_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhams_62133026Controller.cs" />
@@ -230,7 +233,6 @@
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\CTGHs_62133026\Create.cshtml" />
     <Content Include="Areas\Admin\Views\CTGHs_62133026\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\CTGHs_62133026\Details.cshtml" />
@@ -252,6 +254,10 @@
     <Content Include="Areas\Admin\Views\NhanViens_62133026\Details.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens_62133026\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens_62133026\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\HoaDons_62133026\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard_62133026\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CTHDs_62133026\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -153,4 +153,4 @@ INSERT INTO CTGH (maGH, maSP, soLuong, daThanhToan) VALUES
 ALTER TABLE KhachHang ADD FOREIGN KEY (email) REFERENCES TaiKhoan(email)
 ALTER TABLE NhanVien ADD FOREIGN KEY (email) REFERENCES TaiKhoan(email)
 
-select * from SanPham where maLSP = 'LSP01'
+select * from CTHD

@@ -1,17 +1,14 @@
-﻿@model IEnumerable<Project_62133026.Models.NhanVien>
+﻿@model IEnumerable<Project_62133026.Models.HoaDon>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    string gtinh = "";
     var i = 0;
 }
 
-<h2 class="text-center">THÔNG TIN NHÂN VIÊN</h2>
+<h2 class="text-center">THÔNG TIN HÓA ĐƠN</h2>
 
-<p>
-    @Html.ActionLink("Thêm mới nhân viên", "Create")
-</p>
+
 
 <div id="tbIndex" class="container">
     <table class="table table-bordered table-striped table-responsive" id="tbData">
@@ -19,13 +16,13 @@
             <tr style="text-align:center;">
                 <th>STT</th>
                 <th>
-                    Chức vụ
+                    Mã hóa đơn
                 </th>
                 <th>
-                    Tên nhân viên
+                    Tên khách hàng
                 </th>
                 <th>
-                    Giới tính
+                    Ngày giao dịch
                 </th>
 
                 <th>Chức năng</th>
@@ -39,27 +36,22 @@
                     @{ i++;}
                     @i
                 </th>
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.LoaiNhanVien.tenLNV)
+                    @Html.DisplayFor(modelItem => item.maHD)
                 </td>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.tenNV)
+                    @Html.DisplayFor(modelItem => item.KhachHang.tenKH)
                 </td>
 
                 <td>
-                    @{if (item.gioiTinh == true)
-                        { gtinh = "Nam"; }
-                        else
-                        { gtinh = "Nữ"; }
-                    }
-                    @gtinh
+                    @Html.DisplayFor(modelItem => item.ngayGiaoDich)
                 </td>
 
                 <td>
-                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.maNV }) |
-                    @Html.ActionLink("Chi tiết", "Details", new { id = item.maNV }) |
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.maNV })
+                    @Html.ActionLink("Chi tiết", "../CTHDs_62133026/Index", new { id = item.maHD }) 
+                    
                 </td>
             </tr>
         }

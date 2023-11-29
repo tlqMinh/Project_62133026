@@ -39,18 +39,22 @@ namespace Project_62133026.Areas.Admin.Controllers
         public string autoID()
         {
             string id = "";
-            var khachHang = db.KhachHangs.Last();
-            string lastNumber = khachHang.maKH.Substring(2);
-            int index = Convert.ToInt32(lastNumber);
-            index++;
+            var maKH = db.KhachHangs.Count();
+            maKH++;
+            if (maKH > 10)
+            {
+                id = "KH0";
+            }
+            else if (maKH > 100)
+            {
+                id = "KH";
+            }
+            else
+            {
+                id = "KH00";
+            }
 
-            if (index > 9) { id = "KH0"; }
-            else if (index > 99) { id = "KH"; }
-            else { id = "KH00"; }
-
-            // Get last name
-
-            return id + khachHang.ToString();
+            return id + maKH.ToString();
         }
 
         // GET: Admin/KhachHangs_62133026/Create
@@ -70,8 +74,15 @@ namespace Project_62133026.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.KhachHangs.Add(khachHang);
+
+                TaiKhoan taiKhoan = new TaiKhoan();
+                taiKhoan.email = khachHang.email;
+                taiKhoan.matKhau = "1";
+                taiKhoan.nhanVien = true;
+                db.TaiKhoans.Add(taiKhoan);
+
                 khachHang.maKH = autoID();
+                db.KhachHangs.Add(khachHang);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

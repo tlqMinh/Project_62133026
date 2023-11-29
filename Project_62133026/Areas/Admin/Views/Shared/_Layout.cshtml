@@ -35,17 +35,14 @@
             <div id="logo">
                 <img src="~/Image/logo.jpg" alt="LOGO">
             </div>
-            @Html.ActionLink("Guitar Shop", "", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+           
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-end">
                 <ul class="navbar-nav flex-grow-1 mb-lg-auto ml-auto"
+                    <li>@Html.ActionLink("TRANG CHỦ", "../Dashboard_62133026/Index", new { style = "text-decoration: white;" })</li>&nbsp;&nbsp;
                     <li>@Html.ActionLink("SẢN PHẨM", "../SanPhams_62133026/Index", new { style = "text-decoration: none;" })</li>&nbsp;&nbsp;
                     <li>@Html.ActionLink("KHÁC HÀNG", "../KhachHangs_62133026/Index", new { style = "text-decoration: none;" })</li>&nbsp;&nbsp;
                     <li>@Html.ActionLink("NHÂN VIÊN", "../NhanViens_62133026/Index", new { style = "text-decoration: none;" })</li>&nbsp;&nbsp;
-                    <li>@Html.ActionLink("ĐĂNG XUẤT", "", new { style = "text-decoration: none;" })</li>&nbsp;&nbsp;
+                    <li>@Html.ActionLink("ĐĂNG XUẤT", "#", new { style = "text-decoration: none;" })</li>&nbsp;&nbsp;
                 </ul>
             </div>
         </div>

@@ -39,26 +39,28 @@ namespace Project_62133026.Areas.Admin.Controllers
         public string autoID()
         {
             string id = "";
-            var nhanVien = db.NhanViens.Last();
-            string lastNumber = nhanVien.maNV.Substring(2);
-            int index = Convert.ToInt32(lastNumber);
-            index++;
+            var maNV = db.NhanViens.Count();
+            maNV++;
+            if (maNV > 10)
+            {
+                id = "NV0";
+            }
+            else if (maNV > 100)
+            {
+                id = "NV";
+            }
+            else
+            {
+                id = "NV00";
+            }
 
-            if (index > 9) { id = "NV0"; }
-            else if (index > 99) { id = "NV"; }
-            else { id = "NV00"; }
-
-            // Get last name
-
-            return id + nhanVien.ToString();
+            return id + maNV.ToString();
         }
 
         // GET: Admin/NhanViens_62133026/Create
         public ActionResult Create()
         {
             ViewBag.maLNV = new SelectList(db.LoaiNhanViens, "maLNV", "tenLNV");
-            ViewBag.email = new SelectList(db.TaiKhoans, "email", "matKhau");
-            ViewBag.email = new SelectList(db.TaiKhoans, "email", "matKhau");
             return View();
         }
 
@@ -71,15 +73,19 @@ namespace Project_62133026.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.NhanViens.Add(nhanVien);
+                TaiKhoan taiKhoan = new TaiKhoan();
+                taiKhoan.email = nhanVien.email;
+                taiKhoan.matKhau = "1";
+                taiKhoan.nhanVien = true;
+                db.TaiKhoans.Add(taiKhoan);
+
                 nhanVien.maNV = autoID();
+                db.NhanViens.Add(nhanVien);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.maLNV = new SelectList(db.LoaiNhanViens, "maLNV", "tenLNV", nhanVien.maLNV);
-            ViewBag.email = new SelectList(db.TaiKhoans, "email", "matKhau", nhanVien.email);
-            ViewBag.email = new SelectList(db.TaiKhoans, "email", "matKhau", nhanVien.email);
             return View(nhanVien);
         }
 

@@ -40,16 +40,20 @@ namespace Project_62133026.Areas.Admin
         public string autoID()
         {
             string id = "";
-            var sanPham = db.SanPhams.Last();
-            string lastNumber = sanPham.maSP.Substring(2);
-            int index = Convert.ToInt32(lastNumber);
-            index++;
-
-            if (index > 9) { id = "SP0"; }
-            else if (index > 99) { id = "SP"; }
-            else { id = "SP00"; }
-
-            // Get last name
+            var sanPham = db.SanPhams.Count();
+            sanPham++;
+            if (sanPham > 10)
+            {
+                id = "SP0";
+            }
+            else if (sanPham > 100)
+            {
+                id = "SP";
+            }
+            else
+            {
+                id = "SP00";
+            }
 
             return id + sanPham.ToString();
         }

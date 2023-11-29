@@ -52,8 +52,8 @@
             @Html.LabelFor(model => model.gioiTinh, "Giới tính", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    Nam @Html.RadioButtonFor(model => model.gioiTinh, "False", new { @checked = "checked" }) &nbsp;
-                    Nữ @Html.RadioButtonFor(model => model.gioiTinh, "True")
+                    Nữ @Html.RadioButtonFor(model => model.gioiTinh, "False", new { @checked = "checked" }) &nbsp;
+                    Nam @Html.RadioButtonFor(model => model.gioiTinh, "True")
                     @Html.ValidationMessageFor(model => model.gioiTinh, "", new { @class = "text-danger" })
                 </div>
             </div>

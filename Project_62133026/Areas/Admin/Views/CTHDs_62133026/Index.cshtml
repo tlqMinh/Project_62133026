@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Project_62133026.Models.CTHD>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int stt = 0;
+    int tongTien = 0;
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            Sản phẩm
+        </th>
+        <th>
+            Đơn giá
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Thành tiền
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.maHD == ViewBag.id)
+        {
+            <tr>
+                <td class="text-center">
+                    @{
+                        stt++;
+                    }
+                    @stt
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SanPham.tenSP)
+                </td>
+                <td>
+                    @{
+                        int dg = item.SanPham.donGia;
+                        string donGia = dg.ToString("0,000");
+                    }
+                    @donGia
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.soLuong)
+                </td>
+                <td>
+                    @{ 
+                        int tt = item.SanPham.donGia * item.soLuong;
+                        tongTien += tt;
+                        string thanhTien = tt.ToString("0,000");
+                    }
+                    @thanhTien
+                </td>
+            </tr>
+        }
+     }
+    <tr>
+        <th colspan="4">TỔNG CỘNG:</th>
+        <td>
+            @tongTien
+        </td>
+    </tr>
+
+
+</table>
