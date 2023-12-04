@@ -18,9 +18,7 @@ namespace Project_62133026.Models
         public TaiKhoan()
         {
             this.KhachHangs = new HashSet<KhachHang>();
-            this.KhachHangs1 = new HashSet<KhachHang>();
             this.NhanViens = new HashSet<NhanVien>();
-            this.NhanViens1 = new HashSet<NhanVien>();
         }
     
         public string email { get; set; }
@@ -30,10 +28,6 @@ namespace Project_62133026.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KhachHang> KhachHangs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachHang> KhachHangs1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhanVien> NhanViens { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NhanVien> NhanViens1 { get; set; }
     }
 }

@@ -17,7 +17,11 @@ namespace Project_62133026.Areas.Admin.Controllers
         // GET: Admin/NhanViens_62133026
         public ActionResult Index()
         {
-            var nhanViens = db.NhanViens.Include(n => n.LoaiNhanVien).Include(n => n.TaiKhoan).Include(n => n.TaiKhoan1);
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("Index", "AuthenticateAdmin_62133026");
+            }
+            var nhanViens = db.NhanViens.Include(n => n.LoaiNhanVien).Include(n => n.TaiKhoan).Include(n => n.TaiKhoan);
             return View(nhanViens.ToList());
         }
 

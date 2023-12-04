@@ -18,13 +18,14 @@ namespace Project_62133026.Models
         public GioHang()
         {
             this.CTGHs = new HashSet<CTGH>();
+            this.KhachHangs = new HashSet<KhachHang>();
         }
     
         public string maGH { get; set; }
-        public string maKH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTGH> CTGHs { get; set; }
-        public virtual KhachHang KhachHang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KhachHang> KhachHangs { get; set; }
     }
 }

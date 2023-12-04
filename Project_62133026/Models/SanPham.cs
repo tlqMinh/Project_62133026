@@ -29,9 +29,9 @@ namespace Project_62133026.Models
         public int donGia { get; set; }
         public string anh { get; set; }
     
-        public virtual LoaiSanPham LoaiSanPham { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTGH> CTGHs { get; set; }
+        public virtual LoaiSanPham LoaiSanPham { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
     }

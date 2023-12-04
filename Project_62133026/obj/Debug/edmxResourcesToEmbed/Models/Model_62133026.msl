@@ -1,11 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="QLBDGT_62133026ModelStoreContainer" CdmEntityContainer="QLBDGT_62133026Entities">
+    <EntitySetMapping Name="CTGHs">
+      <EntityTypeMapping TypeName="QLBDGT_62133026Model.CTGH">
+        <MappingFragment StoreEntitySet="CTGH">
+          <ScalarProperty Name="maCTGH" ColumnName="maCTGH" />
+          <ScalarProperty Name="maGH" ColumnName="maGH" />
+          <ScalarProperty Name="maSP" ColumnName="maSP" />
+          <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+          <ScalarProperty Name="daThanhToan" ColumnName="daThanhToan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="GioHangs">
       <EntityTypeMapping TypeName="QLBDGT_62133026Model.GioHang">
         <MappingFragment StoreEntitySet="GioHang">
           <ScalarProperty Name="maGH" ColumnName="maGH" />
-          <ScalarProperty Name="maKH" ColumnName="maKH" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -23,10 +33,12 @@
       <EntityTypeMapping TypeName="QLBDGT_62133026Model.KhachHang">
         <MappingFragment StoreEntitySet="KhachHang">
           <ScalarProperty Name="maKH" ColumnName="maKH" />
+          <ScalarProperty Name="hoKH" ColumnName="hoKH" />
           <ScalarProperty Name="tenKH" ColumnName="tenKH" />
           <ScalarProperty Name="sdt" ColumnName="sdt" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+          <ScalarProperty Name="maGH" ColumnName="maGH" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -78,16 +90,6 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="matKhau" ColumnName="matKhau" />
           <ScalarProperty Name="nhanVien" ColumnName="nhanVien" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CTGHs">
-      <EntityTypeMapping TypeName="QLBDGT_62133026Model.CTGH">
-        <MappingFragment StoreEntitySet="CTGH">
-          <ScalarProperty Name="maGH" ColumnName="maGH" />
-          <ScalarProperty Name="maSP" ColumnName="maSP" />
-          <ScalarProperty Name="soLuong" ColumnName="soLuong" />
-          <ScalarProperty Name="daThanhToan" ColumnName="daThanhToan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

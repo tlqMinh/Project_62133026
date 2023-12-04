@@ -5,6 +5,11 @@ CREATE TABLE LoaiSanPham(
 	maLSP VARCHAR(5) PRIMARY KEY,
 	tenLSP NVARCHAR(50) NOT NULL,
 )
+
+CREATE TABLE GioHang(
+    maGH VARCHAR(5) PRIMARY KEY,
+)
+
 CREATE TABLE SanPham(
 	maSP VARCHAR(5) PRIMARY KEY,
 	maLSP VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES LoaiSanPham(maLSP),
@@ -21,18 +26,22 @@ CREATE TABLE TaiKhoan(
     nhanVien bit NOT NULL DEFAULT(1), 
     --1: Nhân viên; 0: Khách hàng
 )
+
 CREATE TABLE KhachHang(
     maKH VARCHAR(5) PRIMARY KEY,
-    tenKH NVARCHAR(50) NOT NULL,
-    sdt VARCHAR(10) NOT NULL,
+    hoKH NVARCHAR(50) NOT NULL,
+    tenKH NVARCHAR(10) NOT NULL,
+    sdt VARCHAR(10) NULL,
     email VARCHAR(50) NOT NULL FOREIGN KEY REFERENCES TaiKhoan(email),
-    diaChi NVARCHAR(100) NOT NULL,
+    diaChi NVARCHAR(100) NULL,
+	maGH VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES GioHang(maGH),
 )
 
 CREATE TABLE LoaiNhanVien(
     maLNV VARCHAR(5) PRIMARY KEY,
     tenLNV NVARCHAR(20) NOT NULL,
 )
+
 CREATE TABLE NhanVien(
     maNV VARCHAR(5) PRIMARY KEY,
     tenNV NVARCHAR(50) NOT NULL,
@@ -54,17 +63,16 @@ CREATE TABLE CTHD(
     maSP VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES SanPham(maSP),
     soLuong TINYINT NOT NULL,
 )
-CREATE TABLE GioHang(
-    maGH VARCHAR(5) PRIMARY KEY,
-    maKH VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES KhachHang(maKH),
-)
+
 CREATE TABLE CTGH(
+	maCTGH varchar(5) primary key,
     maGH VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES GioHang(maGH),
     maSP VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES SanPham(maSP),
     soLuong TINYINT NOT NULL,
     daThanhToan BIT NOT NULL DEFAULT(0),
     -- 0: chưa thanh toán; 1: đã thanh toán
 )
+
 INSERT INTO LoaiSanPham (maLSP, tenLSP) VALUES
 ('LSP01', 'Acoustic'),
 ('LSP02', 'Electric'),
@@ -106,13 +114,30 @@ INSERT INTO SanPham (maSP, maLSP, tenSP, moTa, donViTinh, anh, donGia) VALUES
 INSERT INTO TaiKhoan (email, matKhau, nhanVien) VALUES
 ('nhanvien1@gmail.com', 'matkhau1', 1),
 ('nhanvien2@gmail.com', 'matkhau2', 1),
-('khachhang1@gmail.com', 'matkhau3', 0),
-('khachhang2@gmail.com', 'matkhau4', 0);
+('nhanvien3@gmail.com', 'matkhau3', 1),
+('nhanvien4@gmail.com', 'matkhau4', 1),
+('nhanvien5@gmail.com', 'matkhau5', 1),
+('khachhang1@gmail.com', 'matkhauKH1', 0),
+('khachhang2@gmail.com', 'matkhauKH2', 0),
+('khachhang3@gmail.com', 'matkhauKH3', 0),
+('khachhang4@gmail.com', 'matkhauKH4', 0),
+('khachhang5@gmail.com', 'matkhauKH5', 0);
+
+-- Thêm dữ liệu cho bảng GioHang
+INSERT INTO GioHang (maGH) VALUES
+('GH001'),
+('GH002'),
+('GH003'),
+('GH004'),
+('GH005');
 
 -- Thêm dữ liệu cho bảng KhachHang
-INSERT INTO KhachHang (maKH, tenKH, sdt, email, diaChi) VALUES
-('KH001', N'Nguyễn Văn Khách 1', '0987654321', 'khachhang1@gmail.com', N'123 Đường ABC'),
-('KH002', N'Nguyễn Văn Khách 2', '0987654322', 'khachhang2@gmail.com', N'456 Đường XYZ');
+INSERT INTO KhachHang (maKH, hoKH, tenKH, sdt, email, diaChi, maGH) VALUES
+('KH001', N'Nguyễn Văn', N'Khách 1', '0987654321', 'khachhang1@gmail.com', N'123 Đường ABC', 'GH001'),
+('KH002', N'Nguyễn Văn', N'Khách 2', '0987654322', 'khachhang2@gmail.com', N'456 Đường XYZ', 'GH002'),
+('KH003', N'Trần Nguyễn', N'Khách 3', '123456123', 'khachhang3@gmail.com', N'789 Đường ZCX', 'GH003'),
+('KH004', N'Lê Văn', N'Khách 4', '0123789457', 'khachhang4@gmail.com', N'049 Đường JKL', 'GH004'),
+('KH005', N'Trần Thanh', N'Khách 5', '8527419630', 'khachhang5@gmail.com', N'852 Đường QWE', 'GH005');
 
 -- Thêm dữ liệu cho bảng LoaiNhanVien
 INSERT INTO LoaiNhanVien (maLNV, tenLNV) VALUES
@@ -123,7 +148,10 @@ INSERT INTO LoaiNhanVien (maLNV, tenLNV) VALUES
 -- Thêm dữ liệu cho bảng NhanVien
 INSERT INTO NhanVien (maNV, tenNV, sdt, email, maLNV, gioiTinh, ngaySinh) VALUES
 ('NV001', N'Trần Thị Quản Lý', '0987654323', 'nhanvien1@gmail.com', 'LNV01', 0, '1990-01-01'),
-('NV002', N'Nguyễn Văn Bán Hàng', '0987654324', 'nhanvien2@gmail.com', 'LNV02', 1, '1992-03-15');
+('NV002', N'Nguyễn Văn Bán Hàng', '0987654324', 'nhanvien2@gmail.com', 'LNV02', 1, '1992-03-15'),
+('NV003', N'Lê Thị Kế Toán', '0987654325', 'nhanvien3@gmail.com', 'LNV03', 0, '1988-05-20'),
+('NV004', N'Hồ Văn IT', '0987654326', 'nhanvien4@gmail.com', 'LNV02', 1, '1995-09-10'),
+('NV005', N'Ngọc Thanh Bảo Vệ', '9637410852', 'nhanvien5@gmail.com', 'LNV03', 1, '1995-09-10');
 
 -- Thêm dữ liệu cho bảng HoaDon
 INSERT INTO HoaDon (maHD, maKH, maNV, ngayGiaoDich) VALUES
@@ -137,20 +165,14 @@ INSERT INTO CTHD (maHD, maSP, soLuong) VALUES
 ('HD002', 'SP002', 1),
 ('HD002', 'SP005', 3);
 
--- Thêm dữ liệu cho bảng GioHang
-INSERT INTO GioHang (maGH, maKH) VALUES
-('GH001', 'KH001'),
-('GH002', 'KH002');
-
 -- Thêm dữ liệu cho bảng CTGH
-INSERT INTO CTGH (maGH, maSP, soLuong, daThanhToan) VALUES
-('GH001', 'SP004', 1, 0),
-('GH001', 'SP006', 2, 1),
-('GH002', 'SP008', 1, 0),
-('GH002', 'SP010', 3, 0);
+INSERT INTO CTGH (maCTGH, maGH, maSP, soLuong, daThanhToan) VALUES
+('CT001', 'GH001', 'SP004', 1, 0),
+('CT002','GH001', 'SP006', 2, 1),
+('CT003','GH002', 'SP008', 1, 0),
+('CT004','GH002', 'SP010', 3, 0),
+('CT005','GH003', 'SP020', 3, 0),
+('CT006','GH004', 'SP010', 3, 0),
+('CT007','GH005', 'SP010', 3, 0);
 
--- thêm khóa ngoại cho các bảng
-ALTER TABLE KhachHang ADD FOREIGN KEY (email) REFERENCES TaiKhoan(email)
-ALTER TABLE NhanVien ADD FOREIGN KEY (email) REFERENCES TaiKhoan(email)
-
-select * from HoaDon
+select * from TaiKhoan

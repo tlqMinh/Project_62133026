@@ -1,7 +1,88 @@
-﻿
-@{
-    ViewBag.Title = "View";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="~/Content/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="~/Scripts/JavaAdmin.js"></script>
+
+    <style>
+        .dropdown:hover > .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown > .dropdown-toggle:active {
+            /*Without this, clicking will make it sticky*/
+            pointer-events: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: cornflowerblue;
+        }
+
+        .t-d-n {
+            text-decoration: none;
+            color: black;
+        }
+
+        .profileHover {
+            left: -190%;
+            right: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <a class="navbar-brand fw-bold me-auto" href="../Dashboard_62133026/Index#">ADMIN</a>
+            <!-- -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse text-lg-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 float-end ms-auto text-end">
+                    <li class="nav-item text-lg-end">
+                        <a class="nav-link active" aria-current="page" href="~/Admin/Dashboard_62133026/Index#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item text-lg-end">
+                        <a class="nav-link active" aria-current="page" href="~/Admin/SanPhams_62133026/Index">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item text-lg-end">
+                        <a class="nav-link active" aria-current="page" href="~/Admin/KhachHangs_62133026/Index#">Khách hàng</a>
+                    </li>
+                    <li class="nav-item text-lg-end">
+                        <a class="nav-link active" aria-current="page" href="~/Admin/NhanViens_62133026/Index#">Nhân viên</a>
+                    </li>
+                    <li class="nav-item text-lg-end">
+                        <a class="nav-link active" aria-current="page" href="~/Admin/HoaDons_62133026/Index#">Hóa đơn</a>
+                    </li>
+                    <li class="nav-item text-lg-end">
+                        <a class="nav-link active" aria-current="page" href="~/Admin/AuthenticateAdmin_62133026/Logout">Đăng xuất</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
+
 
 

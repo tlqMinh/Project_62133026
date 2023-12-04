@@ -14,6 +14,7 @@ namespace Project_62133026.Models
     
     public partial class CTGH
     {
+        public string maCTGH { get; set; }
         public string maGH { get; set; }
         public string maSP { get; set; }
         public byte soLuong { get; set; }

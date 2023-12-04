@@ -1,0 +1,12 @@
+﻿@media only screen and (max-width: 991px){
+    .leftside {
+        left: -100%;
+        right: auto;
+    }
+}
+@media only screen and (min-width: 992px){
+    .leftside {
+        left: -50%;
+        right: auto;
+    }
+}

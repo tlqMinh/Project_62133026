@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Project_62133026.Models.SanPham>
+
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    int donGia;
+}
+
+<div id="tbIndex">
+    <div class="pb-5">
+        <h2 class="text-center p-3">DANH MỤC SẢN PHẨM</h2>
+        <div id="search" class="m-2 d-flex">
+            <div class="me-auto"></div>
+            <input type="text" id="Search" onkeyup="liveSearch()" class="form-control w-25 border border-dark" placeholder="Search for names..">
+        </div>
+    </div>
+    <div class="row Search">
+        @foreach (var item in Model)
+        {
+            <div class="col col-md-3 col-sm-6 col-lg-2 card p-2">
+                <a href='@Url.Action("Details", new { id = item.maSP })'>
+                    <img src="~/Image/@Html.DisplayFor(modelItem => item.anh)" class="w-100">
+                </a>
+                <div class="container text-center fw-bold">
+                    <p>@Html.DisplayFor(modelItem => item.tenSP)</p>
+                    @{ 
+                        donGia = item.donGia;
+                        string dg = donGia.ToString("0,000");
+                    }
+                    <p class="text-danger">@dg vnđ</p>
+                    <a href='@Url.Action("", "", new { maMA = item.maSP })' class="btn btn-warning position-absolute top-0 end-0 fw-bold">+</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    function liveSearch() {
+        var searchText = document.getElementById("Search").value.toLowerCase();
+        var items = document.getElementsByClassName("col");
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var itemName = item.innerText.toLowerCase();
+            if (itemName.includes(searchText)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        }
+    }
+    function addToCart(element) {
+        var colElement = element.closest('.col');
+        var maSP = colElement.dataset.mama;
+        var tenSP = colElement.dataset.tenma;
+        var donGia = colElement.dataset.dongia;
+
+        $.ajax({
+            url: '@Url.Action("ThemVaoGioHang", "GioHang")',
+            type: 'POST',
+            data: {
+                maSP: maSP,
+                tenSP: tenSP,
+                donGia: donGia
+            },
+            success: function(result) {
+                window.location.href = '@Url.Action("HienThiGioHang", "GioHang")';
+            },
+            error: function() {
+                alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+            }
+        });
+    }
+</script>

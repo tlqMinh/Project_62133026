@@ -1,14 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="QLBDGT_62133026Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'QLBDGT.dbo.CTGH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CTGH">
     <Key>
-      <PropertyRef Name="maGH" />
-      <PropertyRef Name="maSP" />
-      <PropertyRef Name="soLuong" />
-      <PropertyRef Name="daThanhToan" />
+      <PropertyRef Name="maCTGH" />
     </Key>
+    <Property Name="maCTGH" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="maGH" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="maSP" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="soLuong" Type="tinyint" Nullable="false" />
@@ -31,7 +27,6 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       <PropertyRef Name="maGH" />
     </Key>
     <Property Name="maGH" Type="varchar" MaxLength="5" Nullable="false" />
-    <Property Name="maKH" Type="varchar" MaxLength="5" Nullable="false" />
   </EntityType>
   <EntityType Name="HoaDon">
     <Key>
@@ -47,10 +42,12 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       <PropertyRef Name="maKH" />
     </Key>
     <Property Name="maKH" Type="varchar" MaxLength="5" Nullable="false" />
-    <Property Name="tenKH" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="sdt" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="hoKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tenKH" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="sdt" Type="varchar" MaxLength="10" />
     <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="diaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="diaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="maGH" Type="varchar" MaxLength="5" Nullable="false" />
   </EntityType>
   <EntityType Name="LoaiNhanVien">
     <Key>
@@ -98,7 +95,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
     <Property Name="matKhau" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="nhanVien" Type="bit" Nullable="false" />
   </EntityType>
-  <Association Name="FK__CTGH__maGH__52593CB8">
+  <Association Name="FK__CTGH__maGH__534D60F1">
     <End Role="GioHang" Type="Self.GioHang" Multiplicity="1" />
     <End Role="CTGH" Type="Self.CTGH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -110,7 +107,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTGH__maSP__534D60F1">
+  <Association Name="FK__CTGH__maSP__5441852A">
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
     <End Role="CTGH" Type="Self.CTGH" Multiplicity="*" />
     <ReferentialConstraint>
@@ -122,7 +119,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTHD__maHD__4CA06362">
+  <Association Name="FK__CTHD__maHD__4F7CD00D">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
     <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
     <ReferentialConstraint>
@@ -134,7 +131,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__CTHD__maSP__4D94879B">
+  <Association Name="FK__CTHD__maSP__5070F446">
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
     <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
     <ReferentialConstraint>
@@ -146,19 +143,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__GioHang__maKH__5070F446">
-    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
-    <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="KhachHang">
-        <PropertyRef Name="maKH" />
-      </Principal>
-      <Dependent Role="GioHang">
-        <PropertyRef Name="maKH" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__HoaDon__maKH__49C3F6B7">
+  <Association Name="FK__HoaDon__maKH__4CA06362">
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -170,7 +155,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__HoaDon__maNV__4AB81AF0">
+  <Association Name="FK__HoaDon__maNV__4D94879B">
     <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -182,7 +167,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__KhachHang__email__403A8C7D">
+  <Association Name="FK__KhachHang__email__4222D4EF">
     <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
     <ReferentialConstraint>
@@ -194,19 +179,19 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__KhachHang__email__5535A963">
-    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+  <Association Name="FK__KhachHang__maGH__4316F928">
+    <End Role="GioHang" Type="Self.GioHang" Multiplicity="1" />
     <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TaiKhoan">
-        <PropertyRef Name="email" />
+      <Principal Role="GioHang">
+        <PropertyRef Name="maGH" />
       </Principal>
       <Dependent Role="KhachHang">
-        <PropertyRef Name="email" />
+        <PropertyRef Name="maGH" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__NhanVien__email__44FF419A">
+  <Association Name="FK__NhanVien__email__47DBAE45">
     <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
     <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
     <ReferentialConstraint>
@@ -218,19 +203,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__NhanVien__email__5629CD9C">
-    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
-    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TaiKhoan">
-        <PropertyRef Name="email" />
-      </Principal>
-      <Dependent Role="NhanVien">
-        <PropertyRef Name="email" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__NhanVien__maLNV__45F365D3">
+  <Association Name="FK__NhanVien__maLNV__48CFD27E">
     <End Role="LoaiNhanVien" Type="Self.LoaiNhanVien" Multiplicity="1" />
     <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
     <ReferentialConstraint>
@@ -242,7 +215,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SanPham__maLSP__398D8EEE">
+  <Association Name="FK__SanPham__maLSP__3B75D760">
     <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="1" />
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
     <ReferentialConstraint>
@@ -255,6 +228,7 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="QLBDGT_62133026ModelStoreContainer">
+    <EntitySet Name="CTGH" EntityType="Self.CTGH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
@@ -263,14 +237,6 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
     <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CTGH" EntityType="Self.CTGH" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [CTGH].[maGH] AS [maGH], 
-    [CTGH].[maSP] AS [maSP], 
-    [CTGH].[soLuong] AS [soLuong], 
-    [CTGH].[daThanhToan] AS [daThanhToan]
-    FROM [dbo].[CTGH] AS [CTGH]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="CTHD" EntityType="Self.CTHD" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [CTHD].[maHD] AS [maHD], 
@@ -278,55 +244,47 @@ warning 6002: The table/view 'QLBDGT.dbo.CTHD' does not have a primary key defin
     [CTHD].[soLuong] AS [soLuong]
     FROM [dbo].[CTHD] AS [CTHD]</DefiningQuery>
     </EntitySet>
-    <AssociationSet Name="FK__CTGH__maGH__52593CB8" Association="Self.FK__CTGH__maGH__52593CB8">
+    <AssociationSet Name="FK__CTGH__maGH__534D60F1" Association="Self.FK__CTGH__maGH__534D60F1">
       <End Role="GioHang" EntitySet="GioHang" />
       <End Role="CTGH" EntitySet="CTGH" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTGH__maSP__534D60F1" Association="Self.FK__CTGH__maSP__534D60F1">
+    <AssociationSet Name="FK__CTGH__maSP__5441852A" Association="Self.FK__CTGH__maSP__5441852A">
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="CTGH" EntitySet="CTGH" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTHD__maHD__4CA06362" Association="Self.FK__CTHD__maHD__4CA06362">
+    <AssociationSet Name="FK__CTHD__maHD__4F7CD00D" Association="Self.FK__CTHD__maHD__4F7CD00D">
       <End Role="HoaDon" EntitySet="HoaDon" />
       <End Role="CTHD" EntitySet="CTHD" />
     </AssociationSet>
-    <AssociationSet Name="FK__CTHD__maSP__4D94879B" Association="Self.FK__CTHD__maSP__4D94879B">
+    <AssociationSet Name="FK__CTHD__maSP__5070F446" Association="Self.FK__CTHD__maSP__5070F446">
       <End Role="SanPham" EntitySet="SanPham" />
       <End Role="CTHD" EntitySet="CTHD" />
     </AssociationSet>
-    <AssociationSet Name="FK__GioHang__maKH__5070F446" Association="Self.FK__GioHang__maKH__5070F446">
+    <AssociationSet Name="FK__HoaDon__maKH__4CA06362" Association="Self.FK__HoaDon__maKH__4CA06362">
       <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__maNV__4D94879B" Association="Self.FK__HoaDon__maNV__4D94879B">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KhachHang__email__4222D4EF" Association="Self.FK__KhachHang__email__4222D4EF">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="KhachHang" EntitySet="KhachHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KhachHang__maGH__4316F928" Association="Self.FK__KhachHang__maGH__4316F928">
       <End Role="GioHang" EntitySet="GioHang" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HoaDon__maKH__49C3F6B7" Association="Self.FK__HoaDon__maKH__49C3F6B7">
-      <End Role="KhachHang" EntitySet="KhachHang" />
-      <End Role="HoaDon" EntitySet="HoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="FK__HoaDon__maNV__4AB81AF0" Association="Self.FK__HoaDon__maNV__4AB81AF0">
-      <End Role="NhanVien" EntitySet="NhanVien" />
-      <End Role="HoaDon" EntitySet="HoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="FK__KhachHang__email__403A8C7D" Association="Self.FK__KhachHang__email__403A8C7D">
-      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
       <End Role="KhachHang" EntitySet="KhachHang" />
     </AssociationSet>
-    <AssociationSet Name="FK__KhachHang__email__5535A963" Association="Self.FK__KhachHang__email__5535A963">
-      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
-      <End Role="KhachHang" EntitySet="KhachHang" />
-    </AssociationSet>
-    <AssociationSet Name="FK__NhanVien__email__44FF419A" Association="Self.FK__NhanVien__email__44FF419A">
+    <AssociationSet Name="FK__NhanVien__email__47DBAE45" Association="Self.FK__NhanVien__email__47DBAE45">
       <End Role="TaiKhoan" EntitySet="TaiKhoan" />
       <End Role="NhanVien" EntitySet="NhanVien" />
     </AssociationSet>
-    <AssociationSet Name="FK__NhanVien__email__5629CD9C" Association="Self.FK__NhanVien__email__5629CD9C">
-      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
-      <End Role="NhanVien" EntitySet="NhanVien" />
-    </AssociationSet>
-    <AssociationSet Name="FK__NhanVien__maLNV__45F365D3" Association="Self.FK__NhanVien__maLNV__45F365D3">
+    <AssociationSet Name="FK__NhanVien__maLNV__48CFD27E" Association="Self.FK__NhanVien__maLNV__48CFD27E">
       <End Role="LoaiNhanVien" EntitySet="LoaiNhanVien" />
       <End Role="NhanVien" EntitySet="NhanVien" />
     </AssociationSet>
-    <AssociationSet Name="FK__SanPham__maLSP__398D8EEE" Association="Self.FK__SanPham__maLSP__398D8EEE">
+    <AssociationSet Name="FK__SanPham__maLSP__3B75D760" Association="Self.FK__SanPham__maLSP__3B75D760">
       <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>

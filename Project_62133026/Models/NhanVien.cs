@@ -32,6 +32,5 @@ namespace Project_62133026.Models
         public virtual ICollection<HoaDon> HoaDons { get; set; }
         public virtual LoaiNhanVien LoaiNhanVien { get; set; }
         public virtual TaiKhoan TaiKhoan { get; set; }
-        public virtual TaiKhoan TaiKhoan1 { get; set; }
     }
 }

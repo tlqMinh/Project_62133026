@@ -17,7 +17,11 @@ namespace Project_62133026.Areas.Admin.Controllers
         // GET: Admin/KhachHangs_62133026
         public ActionResult Index()
         {
-            var khachHangs = db.KhachHangs.Include(k => k.TaiKhoan).Include(k => k.TaiKhoan1);
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("Index", "AuthenticateAdmin_62133026");
+            }
+            var khachHangs = db.KhachHangs.Include(k => k.TaiKhoan).Include(k => k.TaiKhoan);
             return View(khachHangs.ToList());
         }
 

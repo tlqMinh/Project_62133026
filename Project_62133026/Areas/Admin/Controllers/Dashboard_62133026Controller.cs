@@ -14,12 +14,16 @@ namespace Project_62133026.Areas.Admin.Controllers
         // GET: Admin/Dashboard_62133026
         public ActionResult Index()
         {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("Index", "AuthenticateAdmin_62133026");
+            }
             //đếm số lượng khách hàng
             int countKH = db.KhachHangs.Count();
             //đếm số lượng hóa đơn
             int countHD = db.HoaDons.Count();
             //tổng doanh thu
-            
+
             ViewBag.countKH = countKH;
             ViewBag.countHD = countHD;
 

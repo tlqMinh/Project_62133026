@@ -18,6 +18,10 @@ namespace Project_62133026.Areas.Admin
         // GET: Admin/SanPhams_62133026
         public ActionResult Index()
         {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("Index", "AuthenticateAdmin_62133026");
+            }
             var sanPhams = db.SanPhams.Include(s => s.LoaiSanPham);
             return View(sanPhams.ToList());
         }

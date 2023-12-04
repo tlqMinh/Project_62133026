@@ -1,0 +1,43 @@
+﻿@model Project_62133026.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<form method="post">
+    <div class="w-25 position-absolute top-50 start-50 translate-middle">
+        <div class="mb-3 text-center">
+            <img width="100" height="100" src="https://i.pinimg.com/736x/6b/dc/d2/6bdcd2814d0587fe1ea1d3a2cacb0b3e.jpg" />
+        </div>
+        <div class="mb-3 text-center fw-bold">
+            REGISTRATION
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" name="name" class="form-control border-bottom border-dark" id="floatingInput" placeholder="John Doe">
+            <label for="floatingInput" style="color:gray;">Tên của Guitarist số 1 thế giới</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" name="email" class="form-control border-bottom border-dark" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput" style="color:gray;">Email</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="matKhau" class="form-control border-bottom border-dark" id="floatingInput" placeholder="*">
+            <label for="floatingInput" style="color:gray;">Mật khẩu</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="matKhau" class="form-control border-bottom border-dark" id="floatingInput" placeholder="*">
+            <label for="floatingInput" style="color:gray;">Xác nhận mật khẩu</label>
+        </div>
+        <div class="mb-3 text-center">
+            Bằng việc đăng ký, tôi đồng ý về <br><a class="text-decoration-none" href="#">Điều kiện điều khoản</a> và <a class="text-decoration-none" href="#">Chính sách bảo mật</a>
+        </div>
+        <div class="mb-3 form-check text-center">
+            <button type="submit" class="btn btn-dark">Đăng ký</button>
+        </div>
+        <div class="mb-3 text-center">
+            Bạn đã có tài khoản? <a class='text-primary' href="Login">Đăng nhập ở đây</a>
+        </div>
+
+    </div>
+</form>

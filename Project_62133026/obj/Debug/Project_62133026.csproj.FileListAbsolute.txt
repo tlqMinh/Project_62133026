@@ -77,6 +77,8 @@ C:\Users\tlqmi\Downloads\Project_62133026\Project_62133026\obj\Debug\Project_621
 C:\Users\tlqmi\Downloads\Project_62133026\Project_62133026\obj\Debug\Project_62133026.csproj.CopyComplete
 C:\Users\tlqmi\Downloads\Project_62133026\Project_62133026\obj\Debug\Project_62133026.dll
 C:\Users\tlqmi\Downloads\Project_62133026\Project_62133026\obj\Debug\Project_62133026.pdb
+E:\Project_62133026\Project_62133026\obj\Debug\Project_62133026.csproj.AssemblyReference.cache
+E:\Project_62133026\Project_62133026\obj\Debug\Project_62133026.csproj.CoreCompileInputs.cache
 E:\Project_62133026\Project_62133026\bin\Project_62133026.dll.config
 E:\Project_62133026\Project_62133026\bin\Project_62133026.dll
 E:\Project_62133026\Project_62133026\bin\Project_62133026.pdb
@@ -155,8 +157,6 @@ E:\Project_62133026\Project_62133026\bin\System.Web.WebPages.Razor.xml
 E:\Project_62133026\Project_62133026\bin\Newtonsoft.Json.xml
 E:\Project_62133026\Project_62133026\bin\Antlr3.Runtime.pdb
 E:\Project_62133026\Project_62133026\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Project_62133026\Project_62133026\obj\Debug\Project_62133026.csproj.AssemblyReference.cache
-E:\Project_62133026\Project_62133026\obj\Debug\Project_62133026.csproj.CoreCompileInputs.cache
 E:\Project_62133026\Project_62133026\obj\Debug\Project_62133026.csproj.CopyComplete
 E:\Project_62133026\Project_62133026\obj\Debug\Project_62133026.dll
 E:\Project_62133026\Project_62133026\obj\Debug\Project_62133026.pdb

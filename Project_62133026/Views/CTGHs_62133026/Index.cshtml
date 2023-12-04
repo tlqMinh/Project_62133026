@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Project_62133026.Models.CTGH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    var maCTGH = Session["maCTGH"] as List<Dictionary<string, object>>;
+    var i = 0;
+    int tongTien = 0;
+    string thanhToan = "";
+}
+
+<div id="tbIndex" class="container">
+    @if (Model != null && Model.Any())
+    {
+        <h2 class="text-center">THÔNG TIN GIỎ HÀNG</h2>
+        <table class="table table-bordered table-striped table-responsive" id="tbData">
+            <thead>
+                <tr style="text-align:center;">
+                    <th>STT</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th>Trạng thái</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach (var item in Model)
+                {
+                    <tr style="text-align:center;">
+                        <th class="text-center" scope="row">
+                            @{ i++;}
+                            @i
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.maSP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SanPham.tenSP)
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-sm btn-secondary" href="@Url.Action("MinusItem", "CTGHs_62133026", new { maSP = item.maSP })">-</a>
+                                <span class="ms-2 me-2">@item.soLuong</span>
+                                <a class="btn btn-sm btn-secondary" href="@Url.Action("PlusItem", "CTGHs_62133026", new { maSP = item.maSP })">+</a>
+                                <a class="fw-bold ms-3 fs-5 text-decoration-none" href="@Url.Action("RemoveItem", "Cart", new { maSP = item.maSP })">Xoá</a>
+                            </div>
+                        </td>
+                        <td>
+                            @{
+                                int tt = item.SanPham.donGia * item.soLuong;
+                                tongTien += tt;
+                                string thanhTien = tt.ToString("0,000");
+                            }
+                            @thanhTien
+                        </td>
+                        <td>
+                            @{
+                                if (item.daThanhToan == true)
+                                { thanhToan = "Đã thanh toán"; }
+                                else { thanhToan = "Chưa thanh toán"; }
+                            }@thanhToan
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="ms-4">
+            <h4>Tổng Tiền: @tongTien vnđ</h4>
+            <a class="btn btn-primary" href="@Url.Action("Buy", "CTGHs_62133026")">Thanh Toán</a>
+        </div>
+    }
+    else
+    {
+        <div class="d-flex justify-content-center align-items-center mt-5">
+            <h2>Giỏ Hàng Trống!</h2>
+        </div>
+    }
+</div>

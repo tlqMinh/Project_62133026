@@ -130,14 +130,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CTGHs_62133026Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthenticateAdmin_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\CTHDs_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\Dashboard_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\HoaDons_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangs_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanViens_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhams_62133026Controller.cs" />
+    <Compile Include="Controllers\Authenticate_62133026Controller.cs" />
+    <Compile Include="Controllers\CTGHs_62133026Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SanPhamsUser_62133026Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,13 +208,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Models\Model_62133026.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model_62133026.Context.cs</LastGenOutput>
       <DependentUpon>Model_62133026.edmx</DependentUpon>
+      <LastGenOutput>Model_62133026.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model_62133026.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -224,20 +228,8 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model_62133026.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model_62133026.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model_62133026.edmx.diagram">
-      <DependentUpon>Model_62133026.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\CTGHs_62133026\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\CTGHs_62133026\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\CTGHs_62133026\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\CTGHs_62133026\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\CTGHs_62133026\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhams_62133026\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhams_62133026\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhams_62133026\Details.cshtml" />
@@ -258,6 +250,31 @@
     <Content Include="Areas\Admin\Views\HoaDons_62133026\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard_62133026\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CTHDs_62133026\Index.cshtml" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Areas\Admin\Views\AuthenticateAdmin_62133026\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdminLogin.cshtml" />
+    <EntityDeploy Include="Models\Model_62133026.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model_62133026.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model_62133026.edmx.diagram">
+      <DependentUpon>Model_62133026.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -278,11 +295,20 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Authenticate_62133026\Login.cshtml" />
+    <Content Include="Views\Authenticate_62133026\Register.cshtml" />
+    <Content Include="Views\SanPhamsUser_62133026\Details.cshtml" />
+    <Content Include="Views\SanPhamsUser_62133026\Index.cshtml" />
+    <Content Include="Views\SanPhamsUser_62133026\IndexFilter.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Shared\_LayoutMaster.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\CTGHs_62133026\Create.cshtml" />
+    <Content Include="Views\CTGHs_62133026\Delete.cshtml" />
+    <Content Include="Views\CTGHs_62133026\Details.cshtml" />
+    <Content Include="Views\CTGHs_62133026\Edit.cshtml" />
+    <Content Include="Views\CTGHs_62133026\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -290,22 +316,6 @@
     <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />

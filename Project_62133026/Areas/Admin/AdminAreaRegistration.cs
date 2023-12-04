@@ -19,6 +19,11 @@ namespace Project_62133026.Areas.Admin
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
+            context.MapRoute(
+                "Admin_login",
+                "Admin/AuthenticateAdmin_62133026/{action}",
+                new { action = "Index" }
+            );
         }
     }
 }

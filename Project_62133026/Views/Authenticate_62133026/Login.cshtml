@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<form method="post">
+    <div class="w-25 position-absolute top-50 start-50 translate-middle">
+        <div class="mb-3 text-center">
+            <img width="100" height="100" src="https://i.pinimg.com/736x/6b/dc/d2/6bdcd2814d0587fe1ea1d3a2cacb0b3e.jpg" />
+        </div>
+        <div class="mb-3 text-center fw-bold">
+            LOGIN
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" name="email" class="form-control border-bottom border-secondary" id="floatingInput" placeholder="name@example.com" value="@ViewBag.email">
+            <label for="floatingInput" style="color:gray;">Email</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="password" class="form-control border-bottom border-secondary" id="floatingInput" placeholder="*">
+            <label for="floatingInput" style="color:gray;">Mật khẩu</label>
+        </div>
+        <div class="mb-3 text-center">
+            <span class="text-danger">
+                @ViewBag.Mess
+            </span>
+        </div>
+        <div class="mb-3 form-check text-center">
+            <a href="#" class="text-decoration-none">Quên mật khẩu</a>
+        </div>
+        <div class="mb-3 form-check text-center">
+            <button type="submit" class="btn btn-dark">Đăng nhập</button>
+        </div>
+        <div class="mb-3 text-center">
+            Bạn chưa có tài khoản? <a class='text-primary' href="Register">Đăng ký ở đây</a>
+        </div>
+
+    </div>
+</form>

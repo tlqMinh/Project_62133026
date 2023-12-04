@@ -4,30 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="64153fa0671143059597022e50e26fd8" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.GioHang" Width="1.5" PointX="5.375" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.HoaDon" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.KhachHang" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.LoaiNhanVien" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.LoaiSanPham" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.NhanVien" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.SanPham" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.TaiKhoan" Width="1.5" PointX="0.625" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.CTGH" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLBDGT_62133026Model.CTHD" Width="1.5" PointX="8.125" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__CTGH__maGH__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__GioHang__maKH__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__CTHD__maHD__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__HoaDon__maKH__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__HoaDon__maNV__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__KhachHang__email__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__KhachHang__email__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__NhanVien__maLNV__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__SanPham__maLSP__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__NhanVien__email__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__NhanVien__email__5629CD9C" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__CTGH__maSP__534D60F1" ManuallyRouted="false" />
-        <AssociationConnector Association="QLBDGT_62133026Model.FK__CTHD__maSP__4D94879B" ManuallyRouted="false" />
+      <Diagram DiagramId="5a9673d36c5a49b8a4bfdde96ea85f4c" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.CTGH" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.GioHang" Width="1.5" PointX="8.125" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.HoaDon" Width="1.5" PointX="0.875" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.KhachHang" Width="1.5" PointX="5.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.LoaiNhanVien" Width="1.5" PointX="5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.LoaiSanPham" Width="1.5" PointX="1" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.NhanVien" Width="1.5" PointX="1" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.SanPham" Width="1.5" PointX="5.125" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.TaiKhoan" Width="1.5" PointX="3.375" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBDGT_62133026Model.CTHD" Width="1.5" PointX="2.875" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__CTGH__maGH__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__CTGH__maSP__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__KhachHang__maGH__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__CTHD__maHD__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__HoaDon__maKH__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__HoaDon__maNV__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__KhachHang__email__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__NhanVien__maLNV__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__SanPham__maLSP__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__NhanVien__email__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="QLBDGT_62133026Model.FK__CTHD__maSP__5070F446" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

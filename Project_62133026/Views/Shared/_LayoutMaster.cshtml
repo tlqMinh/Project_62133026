@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <style>
+        .dropdown:hover > .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown > .dropdown-toggle:active {
+            /*Without this, clicking will make it sticky*/
+            pointer-events: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: cornflowerblue;
+        }
+
+        .t-d-n {
+            text-decoration: none;
+            color: black;
+        }
+        .profileHover{
+            left: -190%;
+            right: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <a class="navbar-brand fw-bold me-auto" href="../Home/Index#">GUITAR STORE</a>
+            <!-- -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse text-lg-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 float-end ms-auto text-end">
+                    <li class="nav-item text-lg-end">
+                        <a class="nav-link active" aria-current="page" href="../Home/Index#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active" aria-current="page" href="../SanPhamsUser_62133026/Index#">Sản phẩm</a>
+                        <ul class="dropdown-menu position-absolute leftside text-center bg-dark" aria-labelledby="dropdownMenuButton">
+                            <li>@Html.ActionLink("Acoustic", "../SanPhamsUser_62133026/IndexFilter", new { loaiSP = "LSP01" }, new { @class = "dropdown-item text-light" })</li>
+                            <li>@Html.ActionLink("Electric", "../SanPhamsUser_62133026/IndexFilter", new { loaiSP = "LSP01" }, new { @class = "dropdown-item text-light" })</li>
+                            <li>@Html.ActionLink("Phụ kiện", "../SanPhamsUser_62133026/IndexFilter", new { loaiSP = "LSP01" }, new { @class = "dropdown-item text-light" })</li>
+
+                        </ul>
+                    </li>
+                    @{
+                        if (HttpContext.Current.Session["user"] != null)
+                        {
+                            string user = HttpContext.Current.Session["user"].ToString();
+
+                            <li class="nav-item dropdown">
+                                <button class="nav-link active btn text-light border-0 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person mb-1" viewBox="0 0 16 16">
+                                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z" />
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu position-absolute leftside profileHover text-center bg-dark" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item text-light" href="">@user</a></li>
+                                    <li><a class="dropdown-item text-light" href="../CTGHs_62133026/Index">Giỏ hàng</a></li>
+                                    <li><a class="dropdown-item text-light" href="../Authenticate_62133026/Logout">Logout</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="../Authenticate_62133026/Login">Đăng nhập</a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

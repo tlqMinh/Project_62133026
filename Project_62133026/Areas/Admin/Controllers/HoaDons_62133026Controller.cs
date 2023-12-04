@@ -17,6 +17,10 @@ namespace Project_62133026.Areas.Admin.Controllers
         // GET: Admin/HoaDons_62133026
         public ActionResult Index()
         {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("Index", "AuthenticateAdmin_62133026");
+            }
             var hoaDons = db.HoaDons.Include(h => h.KhachHang).Include(h => h.NhanVien);
             return View(hoaDons.ToList());
         }
