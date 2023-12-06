@@ -95,7 +95,8 @@ namespace Project_62133026.Controllers
         }
         public ActionResult Payment(string id)
         {
-
+            var ctgh = db.CTGHs.Find(id);
+            
             return RedirectToAction("GioHang");
         }
         // GET: GioHangs_62133026/Delete/5
