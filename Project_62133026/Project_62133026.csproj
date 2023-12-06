@@ -140,6 +140,7 @@
     <Compile Include="Controllers\Authenticate_62133026Controller.cs" />
     <Compile Include="Controllers\GioHangs_62133026Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangs_62133026Controller.cs" />
     <Compile Include="Controllers\SanPhamsUser_62133026Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -305,6 +306,8 @@
     <Content Include="Views\Shared\_LayoutMaster.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\GioHangs_62133026\GioHang.cshtml" />
+    <Content Include="Views\Authenticate_62133026\Profile.cshtml" />
+    <Content Include="Views\Authenticate_62133026\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

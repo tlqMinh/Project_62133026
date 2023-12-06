@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Project_62133026.Models;
@@ -84,6 +86,7 @@ namespace Project_62133026.Controllers
                     var kh = db.KhachHangs.Where(khachHang => khachHang.email == email).First();
                     Session["maGH"] = kh.maGH;
                     Session["user"] = kh.tenKH;
+                    Session["maKH"] = kh.maKH;
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -160,6 +163,73 @@ namespace Project_62133026.Controllers
             
 
             return RedirectToAction("Index", "Home");
+        }
+        public ActionResult Profile(string id)
+        {
+            if (Session["user"] == null)
+            {
+                return View(Login());
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                KhachHang khachHang = db.KhachHangs.Find(id);
+                if (khachHang == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(khachHang);
+            }
+        }
+
+        // GET: KhachHangs_62133026/Edit/5
+        public ActionResult EditProfile(string id)
+        {
+            if (Session["user"] == null) {
+                return View(Login());
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                KhachHang khachHang = db.KhachHangs.Find(id);
+                if (khachHang == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(khachHang);
+            }
+        }
+
+        // POST: KhachHangs_62133026/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        public ActionResult EditProfile(string hoKH, string tenKH, string sdt, string diaChi, string email)
+        {
+            var khachHang = db.KhachHangs.Find(email);
+
+            if (khachHang != null)
+            {
+                // Cập nhật thông tin từ form
+                khachHang.hoKH = hoKH;
+                khachHang.tenKH = tenKH;
+                khachHang.sdt = sdt;
+                khachHang.diaChi = diaChi;
+
+                // Lưu vào cơ sở dữ liệu
+                db.Entry(khachHang).State = EntityState.Modified;
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+            return View(khachHang);
         }
 
     }

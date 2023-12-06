@@ -1,0 +1,40 @@
+﻿@model Project_62133026.Models.KhachHang
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+<form method="post">
+    <div class="profile-container">
+        <div class="profile pt-2 ">
+            <div class="profile-avatar">
+                <!-- Place user's avatar image here -->
+                <img src="https://placekitten.com/100/100" alt="User Avatar">
+            </div>
+
+        </div>
+        <div class="profile-details">
+            <h2>Thông tin cá nhân</h2>
+            <dl>
+                <dt>Họ khách hàng: </dt>
+                <dd><input type="text" name="hoKH" class="form-control" value="@Model.hoKH"/></dd>
+                
+                <dt>Tên khách hàng:</dt>
+                <dd><input type="text" name="tenKH" class="form-control" value="@Model.tenKH"/></dd>
+
+                <dt>Số điện thoại:</dt>
+                <dd><input type="text" name="sdt" class="form-control" value="@Model.sdt"/></dd>
+
+                <dt>Địa chỉ:</dt>
+                <dd><input type="text" name="diaChi" class="form-control" value="@Model.diaChi"/></dd>
+
+                <dt>Email:</dt>
+                <dd><input type="text" name="email" class="form-control" value="@Model.email" readonly/></dd>
+            </dl>
+        </div>
+        <div class="profile-actions">
+            <a href="../Profile?id=@Model.maKH" class="btn btn-primary">Quay lại</a>
+            <input type="submit" value="Lưu" class="btn btn-primary" />
+        </div>
+    </div>
+</form>

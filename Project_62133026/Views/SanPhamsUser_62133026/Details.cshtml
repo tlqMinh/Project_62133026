@@ -5,14 +5,19 @@
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="text-center">THÔNG TIN SẢN PHẨM</h2>
 
-<div>
-    <h4>SanPham</h4>
-    <hr />
+<div class="container justify-content-xxl-center">
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.tenSP)
+            Loại sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiSanPham.tenLSP)
+        </dd>
+        <dt>
+            Tên sản phẩm
         </dt>
 
         <dd>
@@ -20,7 +25,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.moTa)
+            Mô tả
         </dt>
 
         <dd>
@@ -28,7 +33,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.donViTinh)
+            Đơn vị tính
         </dt>
 
         <dd>
@@ -36,32 +41,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.donGia)
+            Đơn giá
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.donGia)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.anh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.anh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiSanPham.tenLSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LoaiSanPham.tenLSP)
-        </dd>
+        <div>
+            <img src="~/Image/@Html.DisplayFor(model => model.anh)" style="width: 20%;" />
+        </div>
 
     </dl>
+    <p>
+        @Html.ActionLink("Quay lại", "Index")
+
+    </p>
 </div>
-<p>
-    
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
