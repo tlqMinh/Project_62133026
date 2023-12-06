@@ -3,59 +3,41 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+    int donGia = 0;
 }
 
-<h2 class="text-center">THÔNG TIN SẢN PHẨM</h2>
+<div id="sanPhamDetails" class="d-block d-lg-flex ps-5 pt-5">
+    <div id="hinhAnh" class="ms-5" style="width:40%;">
+        <img src="~/Image/@Html.DisplayFor(model => model.anh)" class="w-100" />
+    </div>
+    <div id="thongTin" class="w-50 ms-4 mt-5" style="width:60%;">
+        <ul style="list-style-type:none;">
+            <li>
+                <h1>
+                    @Html.DisplayFor(model => model.tenSP)
+                </h1>
+            </li>
+            <li class="pt-5">
+                <span class="fs-4 fw-bold">Mô tả:</span><br />
+                @if (Model.moTa != "")
+                {
 
-<div class="container justify-content-xxl-center">
-    <dl class="dl-horizontal">
-        <dt>
-            Loại sản phẩm
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LoaiSanPham.tenLSP)
-        </dd>
-        <dt>
-            Tên sản phẩm
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tenSP)
-        </dd>
-
-        <dt>
-            Mô tả
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.moTa)
-        </dd>
-
-        <dt>
-            Đơn vị tính
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.donViTinh)
-        </dd>
-
-        <dt>
-            Đơn giá
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.donGia)
-        </dd>
-
-        <div>
-            <img src="~/Image/@Html.DisplayFor(model => model.anh)" style="width: 20%;" />
-        </div>
-
-    </dl>
-    <p>
-        @Html.ActionLink("Quay lại", "Index")
-
-    </p>
+                    <div class="fs-5 w-75 h-50">
+                        @Html.DisplayFor(model => model.moTa)
+                    </div>
+                }
+            </li>
+            <li class="text-danger mt-5 ms-3">
+                <span class="mt-5 ms-4 fs-3 fw-bold">
+                    @{
+                        string dg = Model.donGia.ToString("0,000");
+                    }
+                    @dg VNĐ
+                </span>
+            </li>
+            <li class="ms-5 mt-3">
+                @Html.ActionLink("Thêm vào giỏ hàng", "AddToCart", "GioHangs_62133026", new { maSP = Model.maSP }, new { @class = "btn btn-warning fw-bold" })
+            </li>
+        </ul>
+    </div>
 </div>
-

@@ -214,7 +214,7 @@ namespace Project_62133026.Controllers
         {
             var khachHang = db.KhachHangs.Find(email);
 
-            if (khachHang != null)
+            if (ModelState.IsValid && khachHang != null)
             {
                 // Cập nhật thông tin từ form
                 khachHang.hoKH = hoKH;
@@ -228,6 +228,7 @@ namespace Project_62133026.Controllers
 
                 return RedirectToAction("Index");
             }
+
 
             return View(khachHang);
         }
