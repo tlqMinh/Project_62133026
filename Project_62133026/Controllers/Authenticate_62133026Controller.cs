@@ -11,27 +11,35 @@ namespace Project_62133026.Controllers
     {
         private QLBDGT_62133026Entities db = new QLBDGT_62133026Entities();
 
-        public string autoID(string tablePrimaryID)
+        public string autoID(string tableName)
         {
-            string newID = tablePrimaryID;
-            string lastID = "";
-            switch (tablePrimaryID)
+            string newID = tableName;
+            string lastNumber = "";
+            if (tableName == "KH")
             {
-                case "KH":
-                    var kh = db.KhachHangs.Last();
-                    lastID = kh.maKH;
-                    break;
-                case "NV":
-                    var nv = db.NhanViens.Last();
-                    lastID = nv.maNV;
-                    break;
-                default: return null;
+                var kh = db.KhachHangs.OrderByDescending(x => x.maKH).FirstOrDefault();
+                if (kh == null)
+                {
+                    return "KH001";
+                }
+                string maKH = kh.maKH;
+                lastNumber = maKH.Substring(maKH.IndexOf('0'));
             }
-            int indexOf0 = lastID.IndexOf('0');
-            string id = lastID.Substring(indexOf0);
-            int index = Convert.ToInt32(id);
+            if (tableName == "GH")
+            {
+                var gh = db.GioHangs.OrderByDescending(x => x.maGH).FirstOrDefault();
+                if (gh == null)
+                {
+                    return "GH001";
+                }
+                string maGH = gh.maGH;
+                lastNumber = maGH.Substring(maGH.IndexOf("0"));
+            }
+
+            int index = Convert.ToInt32(lastNumber);
             index++;
-            int len = 5 - tablePrimaryID.Length - index.ToString().Length;
+
+            int len = 5 - newID.Length - index.ToString().Length;
 
             for (int i = 0; i < len; i++)
             {
@@ -74,59 +82,77 @@ namespace Project_62133026.Controllers
                 else
                 {
                     var kh = db.KhachHangs.Where(khachHang => khachHang.email == email).First();
-                    Session["user"] = kh.tenKH;
                     Session["maGH"] = kh.maGH;
+                    Session["user"] = kh.tenKH;
                     return RedirectToAction("Index", "Home");
                 }
             }
-
         }
 
+        [HttpGet]
         public ActionResult Register()
         {
+            if (Session["user"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "email,matKhau")] TaiKhoan taiKhoan, [Bind(Include = "email,name")] KhachHang khachHang)
+        public ActionResult Register(string firstName, string lastName, string email, string password, string confirm)
         {
-            if (ModelState.IsValid)
+            var taikhoan = db.TaiKhoans.Find(email);
+            if (taikhoan != null)
             {
-                var exitsEmail = db.TaiKhoans.Find(taiKhoan.email);
-
-                if (exitsEmail != null)
+                ViewBag.Mess = "Email đã tồn tại!";
+                return View();
+            }
+            else
+            {
+                if (password != confirm)
                 {
-                    ViewBag.Mess = "Tài khoản đã tồn tại";
+                    ViewBag.Mess = "Mật khẩu nhập lại không khớp";
+
+                    ViewBag.firstName = firstName;
+                    ViewBag.lastName = lastName;
+                    ViewBag.email = email;
                     return View();
                 }
-                string id = autoID("KH");
-                if(id != null)
+                else
                 {
-                    string tmp = id.Substring(id.IndexOf('0'));
-                    int index = Convert.ToInt32(id);
+                    if (ModelState.IsValid)
+                    {
+                        //Tạo mới tài khoản
+                        TaiKhoan taiKhoan = new TaiKhoan();
+                        taiKhoan.email = email;
+                        taiKhoan.matKhau = password;
+                        taiKhoan.nhanVien = false;
+                        db.TaiKhoans.Add(taiKhoan);
 
-                    //Tạo khách hàng mới
-                    KhachHang kh = new KhachHang();
-                    kh.maKH = id;
-                    kh.email = taiKhoan.email;
-                    kh.tenKH = "Khách hàng " + index.ToString();
+                        string newMaGH = autoID("GH");
+                        //Tạo mới giỏ hàng
+                        GioHang gioHang = new GioHang();
+                        gioHang.maGH = newMaGH;
+                        db.GioHangs.Add(gioHang);
 
-                    //Tài khoản dành cho khách hàng
-                    taiKhoan.nhanVien = false;
-                    
-                    db.KhachHangs.Add(kh);
-                    db.TaiKhoans.Add(taiKhoan);
-                    db.SaveChanges();
+                        //Tạo mới khách hàng
+                        KhachHang khachHang = new KhachHang();
+                        khachHang.maKH = autoID("KH");
+                        khachHang.email = email;
+                        khachHang.maGH = newMaGH;
+                        khachHang.tenKH = firstName;
+                        khachHang.hoKH = lastName;
+                        db.KhachHangs.Add(khachHang);
 
-                    ViewBag.Mess = "Tạo tài khoản thành công";
-                    return RedirectToAction("Index");
+                        db.SaveChanges();
+                        return RedirectToAction("Login", "Authenticate_62133026");
+                    }
+                    ViewBag.firstName = firstName;
+                    ViewBag.lastName = lastName;
+                    ViewBag.email = email;
+                    return View();
                 }
-                return View();
-
-
-
             }
-            return View(taiKhoan);
         }
         public ActionResult Logout()
         {

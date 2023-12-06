@@ -40,25 +40,44 @@ namespace Project_62133026.Areas.Admin.Controllers
             return View(khachHang);
         }
 
-        public string autoID()
+        public string autoID(string tableName)
         {
-            string id = "";
-            var maKH = db.KhachHangs.Count();
-            maKH++;
-            if (maKH > 10)
+            string newID = tableName;
+            int count = 0;
+            string lastNumber = "";
+            if (tableName == "KH")
             {
-                id = "KH0";
+                count = db.KhachHangs.Count();
+                var kh = db.KhachHangs.OrderByDescending(x => x.maKH).FirstOrDefault();
+                if (kh == null)
+                {
+                    return "KH001";
+                }
+                string maKH = kh.maKH;
+                lastNumber = maKH.Substring(maKH.IndexOf('0'));
             }
-            else if (maKH > 100)
+            if (tableName == "GH")
             {
-                id = "KH";
-            }
-            else
-            {
-                id = "KH00";
+                count = db.GioHangs.Count();
+                var gh = db.GioHangs.OrderByDescending(x => x.maGH).FirstOrDefault();
+                if (gh == null)
+                {
+                    return "GH001";
+                }
+                string maGH = gh.maGH;
+                lastNumber = maGH.Substring(maGH.IndexOf("0"));
             }
 
-            return id + maKH.ToString();
+            int index = Convert.ToInt32(lastNumber);
+            index++;
+
+            int len = 5 - newID.Length - index.ToString().Length;
+
+            for (int i = 0; i < len; i++)
+            {
+                newID += "0";
+            }
+            return newID += index.ToString();
         }
 
         // GET: Admin/KhachHangs_62133026/Create
@@ -78,20 +97,26 @@ namespace Project_62133026.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                //Tạo mới tài khoản
                 TaiKhoan taiKhoan = new TaiKhoan();
                 taiKhoan.email = khachHang.email;
                 taiKhoan.matKhau = "1";
-                taiKhoan.nhanVien = true;
+                taiKhoan.nhanVien = false;
                 db.TaiKhoans.Add(taiKhoan);
 
-                khachHang.maKH = autoID();
+                string newMaGH = autoID("GH");
+                //Tạo mới giỏ hàng
+                GioHang gioHang = new GioHang();
+                gioHang.maGH = newMaGH;
+                db.GioHangs.Add(gioHang);
+
+                //Tạo mới khách hàng
+                khachHang.maKH = autoID("KH");
+                khachHang.maGH = newMaGH;
                 db.KhachHangs.Add(khachHang);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.email = new SelectList(db.TaiKhoans, "email", "matKhau", khachHang.email);
             ViewBag.email = new SelectList(db.TaiKhoans, "email", "matKhau", khachHang.email);
             return View(khachHang);
         }

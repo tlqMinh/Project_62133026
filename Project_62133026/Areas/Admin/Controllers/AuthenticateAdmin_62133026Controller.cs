@@ -55,7 +55,7 @@ namespace Project_62133026.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             Session.Remove("admin");
-            return RedirectToAction("LoginAdmin", "AuthenticateAdmin_62133026");
+            return RedirectToAction("Index", "AuthenticateAdmin_62133026");
 
         }
     }

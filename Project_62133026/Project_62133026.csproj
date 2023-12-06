@@ -138,7 +138,7 @@
     <Compile Include="Areas\Admin\Controllers\NhanViens_62133026Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhams_62133026Controller.cs" />
     <Compile Include="Controllers\Authenticate_62133026Controller.cs" />
-    <Compile Include="Controllers\CTGHs_62133026Controller.cs" />
+    <Compile Include="Controllers\GioHangs_62133026Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamsUser_62133026Controller.cs" />
     <Compile Include="Global.asax.cs">
@@ -304,11 +304,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutMaster.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\CTGHs_62133026\Create.cshtml" />
-    <Content Include="Views\CTGHs_62133026\Delete.cshtml" />
-    <Content Include="Views\CTGHs_62133026\Details.cshtml" />
-    <Content Include="Views\CTGHs_62133026\Edit.cshtml" />
-    <Content Include="Views\CTGHs_62133026\Index.cshtml" />
+    <Content Include="Views\GioHangs_62133026\GioHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

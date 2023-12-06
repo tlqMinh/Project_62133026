@@ -13,21 +13,32 @@
         <div class="mb-3 text-center fw-bold">
             REGISTRATION
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" name="name" class="form-control border-bottom border-dark" id="floatingInput" placeholder="John Doe">
-            <label for="floatingInput" style="color:gray;">Tên của Guitarist số 1 thế giới</label>
+        <div class="mb-3 d-flex">
+            <div class="form-floating w-75">
+                <input type="text" name="lastName" class="form-control border-bottom border-dark" id="floatingInput" placeholder="John Doe" value="@ViewBag.lastName">
+                <label for="floatingInput" style="color:gray;">Họ</label>
+            </div>
+            <div class="ps-1"></div>
+            <div class="form-floating w-25">
+                <input type="text" name="firstName" class="form-control border-bottom border-dark" id="floatingInput" placeholder="John Doe" value="@ViewBag.firstName">
+                <label for="floatingInput" style="color:gray;">Tên</label>
+            </div>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" name="email" class="form-control border-bottom border-dark" id="floatingInput" placeholder="name@example.com">
+            <input type="email" name="email" class="form-control border-bottom border-dark" id="floatingInput" placeholder="name@example.com" value="@ViewBag.email">
             <label for="floatingInput" style="color:gray;">Email</label>
         </div>
         <div class="form-floating mb-3">
-            <input type="password" name="matKhau" class="form-control border-bottom border-dark" id="floatingInput" placeholder="*">
+            <input type="password" name="password" class="form-control border-bottom border-dark" id="floatingInput" placeholder="*">
             <label for="floatingInput" style="color:gray;">Mật khẩu</label>
         </div>
-        <div class="form-floating mb-3">
-            <input type="password" name="matKhau" class="form-control border-bottom border-dark" id="floatingInput" placeholder="*">
+        <div class="form-floating">
+            <input type="password" name="confirm" class="form-control border-bottom border-dark" id="floatingInput" placeholder="*">
             <label for="floatingInput" style="color:gray;">Xác nhận mật khẩu</label>
+            
+        </div>
+        <div class="text-center mb-3">
+            <span class="text-danger">@ViewBag.Mess</span>
         </div>
         <div class="mb-3 text-center">
             Bằng việc đăng ký, tôi đồng ý về <br><a class="text-decoration-none" href="#">Điều kiện điều khoản</a> và <a class="text-decoration-none" href="#">Chính sách bảo mật</a>

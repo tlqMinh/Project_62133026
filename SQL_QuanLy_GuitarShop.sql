@@ -174,5 +174,3 @@ INSERT INTO CTGH (maCTGH, maGH, maSP, soLuong, daThanhToan) VALUES
 ('CT005','GH003', 'SP020', 3, 0),
 ('CT006','GH004', 'SP010', 3, 0),
 ('CT007','GH005', 'SP010', 3, 0);
-
-select * from TaiKhoan

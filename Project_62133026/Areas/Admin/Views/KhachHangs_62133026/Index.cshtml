@@ -8,10 +8,10 @@
 
 <h2 class="text-center">KHÁCH HÀNG</h2>
 
-<p>
-    @Html.ActionLink("Thêm mới", "Create")
-</p>
 <div id="tbIndex" class="container">
+    <p>
+        @Html.ActionLink("Thêm mới", "Create")
+    </p>
     <table class="table table-bordered table-striped table-responsive" id="tbData">
         <thead>
             <tr style="text-align:center;">
@@ -38,7 +38,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.sdt)
                 </td>
-                
+
                 <td>
                     @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.maKH }) |
                     @Html.ActionLink("Chi tiết", "Details", new { id = item.maKH }) |

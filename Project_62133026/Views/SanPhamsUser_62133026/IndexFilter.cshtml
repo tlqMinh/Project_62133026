@@ -30,7 +30,8 @@
                             string dg = donGia.ToString("0,000");
                         }
                         <p class="text-danger">@dg vnđ</p>
-                        <a href='@Url.Action("", "", new { maMA = item.maSP })' class="btn btn-warning position-absolute top-0 end-0">+</a>
+
+                        @Html.ActionLink("+", "AddToCart", "GioHangs_62133026", new { maSP = item.maSP }, new { @class = "btn btn-warning position-absolute top-0 end-0 fw-bold" })
                     </div>
                 </div>
             }
@@ -52,24 +53,5 @@
             }
         }
     }
-    function addToCart(element) {
-        var colElement = element.closest('.col');
-        var maMA = colElement.dataset.mama;
-        var tenMA = colElement.dataset.tenma;
-        var donGia = colElement.dataset.dongia;
-
-        $.ajax({
-            url: '@Url.Action("ThemVaoGioHang", "GioHang")',
-            type: 'POST',
-            data: {
-                maMA: maMA
-            },
-            success: function(result) {
-                window.location.href = '@Url.Action("HienThiGioHang", "GioHang")';
-            },
-            error: function() {
-                alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
-            }
-        });
-    }
+    
 </script>
